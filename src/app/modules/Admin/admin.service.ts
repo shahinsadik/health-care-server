@@ -1,3 +1,4 @@
+import { log } from "console";
 import { Admin, Prisma, UserStatus } from "../../../generated/prisma";
 import { paginationHelper } from "../../../helpers/paginationHelper";
 import prisma from "../../../sheared/prisma";
@@ -68,9 +69,11 @@ const getByIdFromDB = async (id: string) => {
 };
 
 const updateIntoDB = async (id: string, data: Partial<Admin>) => {
+
   await prisma.admin.findUniqueOrThrow({
     where: {
       id,
+      isDeleted: false,
     },
   });
   const result = await prisma.admin.update({
