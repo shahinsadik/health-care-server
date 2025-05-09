@@ -33,13 +33,13 @@ const getByIdFromDB = async (req: Request, res: Response) => {
     const result = await AdminService.getByIdFromDB(id);
     res.status(200).json({
       success: true,
-      message: `Get Admin by ID ${id} from DB Successfully`,
+      message: `Get Admin Successfully. ID: ${id}`,
       data: result,
     });
   } catch (err: any) {
     res.status(500).json({
       success: false,
-      message: "Failed to get Admin by ID from DB",
+      message: "Failed to get Admin",
       error: err.message,
     });
   }
@@ -52,17 +52,55 @@ const updateIntoDB = async (req: Request, res: Response) => {
     const result = await AdminService.updateIntoDB(id, req.body);
     res.status(200).json({
       success: true,
-      message: `Update Admin by ID ${id} into DB Successfully`,
+      message: `Updated Admin Successfully`,
       data: result,
     });
   } catch (err: any) {
     res.status(500).json({
       success: false,
-      message: "Failed to update Admin into DB",
+      message: "Failed to update Admin",
       error: err.message,
     });
   }
-  
-}
-
-export const AdminController = { getAllFromDB, getByIdFromDB, updateIntoDB };
+};
+const deleteFromDB = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const result = await AdminService.deleteFromDB(id);
+    res.status(200).json({
+      success: true,
+      message: `Admin Delete Successfully`,
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete Admin",
+      error: err.message,
+    });
+  }
+};
+const softDeleteFromDB = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const result = await AdminService.softDeleteFromDB(id);
+    res.status(200).json({
+      success: true,
+      message: `Soft deleted Admin Successfully`,
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to soft delete Admin",
+      error: err.message,
+    });
+  }
+};
+export const AdminController = {
+  getAllFromDB,
+  getByIdFromDB,
+  updateIntoDB,
+  deleteFromDB,
+  softDeleteFromDB,
+};
