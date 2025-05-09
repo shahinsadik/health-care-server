@@ -9,7 +9,7 @@ const globalErrorHandeler = (
 ) => {
   res.status(status.INTERNAL_SERVER_ERROR).send({
     success: false,
-    message: err.name || "Some thing went worng!",
+    message: err.message || "Some thing went worng!",
     error: err || "Internal Server Error",
   });
 };
