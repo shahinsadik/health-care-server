@@ -2,8 +2,7 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import router from "./app/routes";
 import status from "http-status";
-import globalErrorHandeler from "./app/middlewares/globalErrorHandlers";
-import path from "path";
+import globalErrorHandeler from "./app/middlewares/globalErrorHandler";
 
 const app: Application = express();
 app.use(cors());
@@ -19,8 +18,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/v1", router);
-app.use(globalErrorHandeler);
-
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(status.NOT_FOUND).send({
     success: false,
@@ -32,4 +29,5 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     },
   });
 });
+app.use(globalErrorHandeler);
 export default app;
