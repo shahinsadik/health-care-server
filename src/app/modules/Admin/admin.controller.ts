@@ -36,7 +36,7 @@ const getByIdFromDB = async (req: Request, res: Response, next:NextFunction) => 
       data: result,
     });
   } catch (err: any) {
-    next();
+    next(err);
 
   }
 };
@@ -57,7 +57,7 @@ const updateIntoDB = async (
       data: result,
     });
   } catch (err: any) {
-    next();
+    next(err);
   }
 };
 const deleteFromDB = async (req: Request, res: Response, next:NextFunction) => {
@@ -72,7 +72,7 @@ const deleteFromDB = async (req: Request, res: Response, next:NextFunction) => {
       data: result,
     });
   } catch (err: any) {
-    next();
+    next(err);
   }
 };
 const softDeleteFromDB = async (req: Request, res: Response, next:NextFunction) => {
@@ -87,7 +87,7 @@ const softDeleteFromDB = async (req: Request, res: Response, next:NextFunction) 
       data: result,
     });
   } catch (err: any) {
-    next();
+    next(err);
   }
 };
 export const AdminController = {

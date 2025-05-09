@@ -3,6 +3,7 @@ import cors from "cors";
 import router from "./app/routes";
 import status from "http-status";
 import globalErrorHandeler from "./app/middlewares/globalErrorHandlers";
+import path from "path";
 
 const app: Application = express();
 app.use(cors());
@@ -19,4 +20,17 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/v1", router);
 app.use(globalErrorHandeler);
+
+app.use((req: Request, res: Response, next:NextFunction) => {
+  console.log("Api Not Found", req);
+  res.status(status.NOT_FOUND).send({
+    success: false,
+    message: "Api Not Found",
+    error: {
+      path: req.originalUrl,
+      method: req.method,
+      message: "Your request path is not found",
+    }
+  });
+});
 export default app;
