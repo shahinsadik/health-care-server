@@ -1,6 +1,6 @@
 import { Admin, Prisma, UserStatus } from "../../../generated/prisma";
 import { paginationHelper } from "../../../helpers/paginationHelper";
-import prisma from "../../../shared/prisma";
+import prisma from "../../../sheared/prisma";
 
 import { adminSearchableFields } from "./admin.constant";
 
