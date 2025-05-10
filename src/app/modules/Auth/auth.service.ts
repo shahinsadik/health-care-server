@@ -1,5 +1,8 @@
+import { Secret } from "jsonwebtoken";
+import config from "../../../config";
 import { UserStatus } from "../../../generated/prisma";
 import { jwtHelper } from "../../../helpers/jwtHelper";
+
 import prisma from "../../../sheared/prisma";
 import bcrypt from "bcrypt";
 
@@ -22,8 +25,8 @@ const loginUser = async (payload: { email: string; password: string }) => {
       email: userData.email,
       role: userData.role,
     },
-    "abcdefghijklmnop",
-    "5m"
+    config.jwt.jwt_secret as Secret,
+    config.jwt.expires_in as string
   );
 
   const refreshToken = jwtHelper.generateToken(
@@ -31,8 +34,8 @@ const loginUser = async (payload: { email: string; password: string }) => {
       email: userData.email,
       role: userData.role,
     },
-    "abcdefghijklmnopq",
-    "30d"
+    config.jwt.refresh_token_secret as Secret,
+    config.jwt.refresh_token_expires_in as string
   );
 
   return {
