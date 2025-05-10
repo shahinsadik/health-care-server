@@ -48,7 +48,7 @@ const loginUser = async (payload: { email: string; password: string }) => {
 const refreshToken = async (token: string) => {
   let decodedToken;
   try {
-    decodedToken = jwtHelper.verifyToken(token, "abcdefghijklmnopq");
+    decodedToken = jwtHelper.verifyToken(token, config.jwt.refresh_token_secret as Secret);
   } catch (err) {
     throw new Error("You are Not Authorized");
   }
