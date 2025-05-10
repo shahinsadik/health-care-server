@@ -40,4 +40,8 @@ const loginUser = async (payload: { email: string; password: string }) => {
   };
 };
 
-export const AuthService = { loginUser };
+const refreshToken = async (token: string) => {
+  console.log("refreshToken", token);
+};
+
+export const AuthService = { loginUser, refreshToken };
