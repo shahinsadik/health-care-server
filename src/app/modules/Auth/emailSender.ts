@@ -10,11 +10,14 @@ const emailSender = async (eamil: string, html: string) => {
       user: config.emailSender.email,
       pass: config.emailSender.app_password,
     },
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
   const info = await transporter.sendMail({
     from: '"SS Health Care" <shahinsadik.dev@gmail.com>',
-    to: "bar@example.com, baz@example.com",
+    to: eamil,
     subject: "Password Reset",
     // text: "Hello world?", // plain‑text body
     html, // HTML body
