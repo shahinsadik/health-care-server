@@ -12,5 +12,7 @@ export default {
     expires_in: process.env.EXPIRES_IN || "5m",
     refresh_token_secret: process.env.REFRESH_TOKEN_SECRET,
     refresh_token_expires_in: process.env.REFRESH_TOKEN_EXPIRES_IN || "30d",
+    reset_pass_secrect: process.env.REFRESH_TOKEN_SECRET,
+    reset_pass_expires_in: process.env.RESET_PASS_TOKEN__EXPIRES_IN,
   },
 };
