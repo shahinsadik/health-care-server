@@ -2,7 +2,6 @@ import { Secret } from "jsonwebtoken";
 import config from "../../../config";
 import { UserStatus } from "../../../generated/prisma";
 import { jwtHelper } from "../../../helpers/jwtHelper";
-
 import prisma from "../../../sheared/prisma";
 import bcrypt from "bcrypt";
 
@@ -13,11 +12,11 @@ const loginUser = async (payload: { email: string; password: string }) => {
       status: UserStatus.ACTIVE,
     },
   });
-  const isPasswordValid: boolean = await bcrypt.compare(
+  const isCarrectPassword: boolean = await bcrypt.compare(
     payload.password,
     userData.password
   );
-  if (!isPasswordValid) {
+  if (!isCarrectPassword) {
     throw new Error("Invalid password");
   }
   const accessToken = jwtHelper.generateToken(
@@ -66,8 +65,8 @@ const refreshToken = async (token: string) => {
       email: userData.email,
       role: userData.role,
     },
-    "abcdefghijklmnop",
-    "5m"
+    config.jwt.jwt_secret as Secret,
+    config.jwt.expires_in as string
   );
 
   return {
@@ -76,12 +75,33 @@ const refreshToken = async (token: string) => {
   };
 };
 
-const changePassword = async (user:any, payload: any) => {
-  const userData = prisma.user.findFirstOrThrow({
+const changePassword = async (user: any, payload: any) => {
+  const userData = await prisma.user.findUniqueOrThrow({
     where: {
       email: user.email,
+      status: UserStatus.ACTIVE,
     },
   });
+
+  const isCarrectPassword: boolean = await bcrypt.compare(
+    payload.oldPassword,
+    userData.password
+  );
+  if (!isCarrectPassword) {
+    throw new Error("Invalid password");
+  }
+  const hashedPassword: string = await bcrypt.hash(payload.newPassword, 12);
+
+  await prisma.user.updateMany({
+    where: {
+      email: userData.email,
+    },
+    data: {
+      password: hashedPassword,
+      needPasswordChange: false,
+    },
+  });
+  return "Password Change successfully";
 };
 
 export const AuthService = { loginUser, refreshToken, changePassword };
