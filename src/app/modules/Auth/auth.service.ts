@@ -4,6 +4,7 @@ import { UserStatus } from "../../../generated/prisma";
 import { jwtHelper } from "../../../helpers/jwtHelper";
 import prisma from "../../../sheared/prisma";
 import bcrypt from "bcrypt";
+import emailSender from "./emailSender";
 
 const loginUser = async (payload: { email: string; password: string }) => {
   const userData = await prisma.user.findUniqueOrThrow({
@@ -123,7 +124,44 @@ const forgotPassword = async (payload: { email: string }) => {
   const resetPassLink =
     config.reset_password_link +
     `?userId=${userData.id}&token=${resetPassToken}`;
-  console.log(resetPassLink);
+  await emailSender(
+    userData.email,
+    `
+  <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 30px;">
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <h2 style="color: #2e7d32;">SS Health Care</h2>
+      <p style="font-size: 16px; color: #555555;">
+        Dear User,<br><br>
+        We received a request to reset your password for your SS Health Care account. Click the button below to proceed:
+      </p>
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="${resetPassLink}" style="text-decoration: none;">
+          <button style="
+            background-color: #2e7d32;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          ">
+            Reset Password
+          </button>
+        </a>
+      </div>
+      <p style="font-size: 14px; color: #999999;">
+        If you did not request this, please ignore this email or contact our support team.
+      </p>
+      <p style="font-size: 14px; color: #999999; margin-top: 40px;">
+        Best regards,<br/>
+        <strong>SS Health Care Support Team</strong>
+      </p>
+    </div>
+  </div>
+  `
+  );
+  
 };
 
 export const AuthService = {
