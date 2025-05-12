@@ -1,5 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import { UserService } from "./user.service";
+import catchAsync from "../../../sheared/catchAsync";
+import pick from "../../../sheared/pick";
+import { userFilterableField, userSearchableFields } from "./user.const";
+import sendResponse from "../../../sheared/sendResponse";
+import status from "http-status";
 
 const createAdmin = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -60,5 +65,22 @@ const createPatient = async (
     });
   }
 };
+const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
+  const filters = pick(req.query, userFilterableField);
+  const options = pick(req.query, ["limit", "page", "sortBy", "sortOrder"]);
+  const result = await UserService.getAllFromDB(filters, options);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Get all User Successfully",
+    meta: result.meta,
+    data: result.data,
+  });
+});
 
-export const UserController = { createAdmin, createDoctor, createPatient };
+export const UserController = {
+  createAdmin,
+  createDoctor,
+  createPatient,
+  getAllFromDB,
+};

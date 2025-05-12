@@ -1,12 +1,21 @@
-import { UserRole } from "../../../generated/prisma";
+import {
+  Admin,
+  Doctor,
+  Patient,
+  Prisma,
+  UserRole,
+} from "../../../generated/prisma";
 import * as bcrypt from "bcrypt";
 import prisma from "../../../sheared/prisma";
 import { FileUploaders } from "../../../helpers/fileUploaders";
 import { IFile } from "../../interfaces/file";
 import { Request } from "express";
+import { IPaginationsOptions } from "../../interfaces/pagination";
+import { paginationHelper } from "../../../helpers/paginationHelper";
+import { userSearchableFields } from "./user.const";
 
-const createAdmin = async (req: any) => {
-  const file: IFile = req.file;
+const createAdmin = async (req: Request): Promise<Admin> => {
+  const file = req.file as IFile;
   if (file) {
     const uploadToCloudaniry = await FileUploaders.uploadCloudaniry(file);
     req.body.admin.profilePhoto = uploadToCloudaniry?.secure_url;
@@ -32,8 +41,8 @@ const createAdmin = async (req: any) => {
   return result;
 };
 
-const createDoctor = async (req: any) => {
-  const file: IFile = req.file;
+const createDoctor = async (req: Request): Promise<Doctor> => {
+  const file = req.file as IFile;
   if (file) {
     const uploadToCloudaniry = await FileUploaders.uploadCloudaniry(file);
     req.body.doctor.profilePhoto = uploadToCloudaniry?.secure_url;
@@ -59,7 +68,7 @@ const createDoctor = async (req: any) => {
   return result;
 };
 
-const createPatient = async (req: Request) => {
+const createPatient = async (req: Request): Promise<Patient> => {
   const file = req.file as IFile;
   if (file) {
     const uploadToCloudaniry = await FileUploaders.uploadCloudaniry(file);
@@ -86,4 +95,61 @@ const createPatient = async (req: Request) => {
   return result;
 };
 
-export const UserService = { createAdmin, createDoctor, createPatient };
+const getAllFromDB = async (params: any, options: IPaginationsOptions) => {
+  console.log("params", params, "Options:", options);
+
+  const { limit, page, skip } = paginationHelper.calculatePagination(options);
+  const { searchTerm, ...filterData } = params;
+  const andConditions: Prisma.UserWhereInput[] = [];
+
+  if (params.searchTerm) {
+    andConditions.push({
+      OR: userSearchableFields.map((field) => ({
+        [field]: {
+          contains: params.searchTerm,
+          mode: "insensitive",
+        },
+      })),
+    });
+  }
+
+  if (Object.keys(filterData).length > 0) {
+    andConditions.push({
+      AND: Object.keys(filterData).map((key) => ({
+        [key]: {
+          equals: (filterData as any)[key],
+        },
+      })),
+    });
+  }
+
+  const whereConditions: Prisma.UserWhereInput =
+    andConditions.length > 0 ? { AND: andConditions } : {};
+  const result = await prisma.user.findMany({
+    where: whereConditions,
+    skip,
+    take: limit,
+    orderBy:
+      options.sortBy && options.sortOrder
+        ? {
+            [options.sortBy]: options.sortOrder,
+          }
+        : {
+            createdAt: "desc",
+          },
+  });
+
+  const total = await prisma.user.count({
+    where: whereConditions,
+  });
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  };
+};
+
+export const UserService = { createAdmin, createDoctor, createPatient , getAllFromDB};
