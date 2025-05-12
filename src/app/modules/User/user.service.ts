@@ -3,6 +3,7 @@ import * as bcrypt from "bcrypt";
 import prisma from "../../../sheared/prisma";
 import { FileUploaders } from "../../../helpers/fileUploaders";
 import { IFile } from "../../interfaces/file";
+import { Request } from "express";
 
 const createAdmin = async (req: any) => {
   const file: IFile = req.file;
@@ -57,8 +58,9 @@ const createDoctor = async (req: any) => {
   });
   return result;
 };
-const createPatient = async (req: any) => {
-  const file: IFile = req.file;
+
+const createPatient = async (req: Request) => {
+  const file = req.file as IFile;
   if (file) {
     const uploadToCloudaniry = await FileUploaders.uploadCloudaniry(file);
     req.body.patient.profilePhoto = uploadToCloudaniry?.secure_url;
