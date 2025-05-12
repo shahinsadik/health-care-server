@@ -179,13 +179,22 @@ const resetPassword = async (
     token,
     config.jwt.reset_pass_secrect as Secret
   );
-  if(!isValidToken){
-    throw new ApiError(status.FORBIDDEN, "Forbidden")
+  if (!isValidToken) {
+    throw new ApiError(status.FORBIDDEN, "Forbidden");
   }
-  //hashed password
-  //update password 
-  //
-  console.log(isValidToken);
+  // hash password
+  const password = await bcrypt.hash(payload.password, 12);
+
+  // update into database
+  await prisma.user.update({
+    where: {
+      id: payload.id,
+    },
+    data: {
+      password,
+    },
+  });
+  
 };
 
 export const AuthService = {
