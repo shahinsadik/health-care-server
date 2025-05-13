@@ -173,6 +173,17 @@ exports.Prisma.PatientScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SpecialtiesScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  icon: 'icon'
+};
+
+exports.Prisma.DoctorSpecialtiesScalarFieldEnum = {
+  specialtiesId: 'specialtiesId',
+  doctorId: 'doctorId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -209,7 +220,9 @@ exports.Prisma.ModelName = {
   User: 'User',
   Admin: 'Admin',
   Doctor: 'Doctor',
-  Patient: 'Patient'
+  Patient: 'Patient',
+  Specialties: 'Specialties',
+  DoctorSpecialties: 'DoctorSpecialties'
 };
 
 /**

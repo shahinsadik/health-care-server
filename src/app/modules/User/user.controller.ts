@@ -2,9 +2,10 @@ import { NextFunction, Request, Response } from "express";
 import { UserService } from "./user.service";
 import catchAsync from "../../../sheared/catchAsync";
 import pick from "../../../sheared/pick";
-import { userFilterableField, userSearchableFields } from "./user.const";
+import { userFilterableField} from "./user.const";
 import sendResponse from "../../../sheared/sendResponse";
 import status from "http-status";
+import { IAuthUser } from "../../interfaces/common";
 
 const createAdmin = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -90,28 +91,31 @@ const changeProfileStatus = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const getMyProfile = catchAsync(async (req: Request, res: Response) => {
-  const user = req.user;
-  const result = await UserService.getMyProfile(user);
-  sendResponse(res, {
-    statusCode: status.OK,
-    success: true,
-    message: "Profile Fetched Successfully",
-    data: result,
-  });
-});
+const getMyProfile = catchAsync(
+  async (req: Request & { user?: IAuthUser }, res: Response) => {
+    const user = req.user;
+    const result = await UserService.getMyProfile(user as IAuthUser);
+    sendResponse(res, {
+      statusCode: status.OK,
+      success: true,
+      message: "Profile Fetched Successfully",
+      data: result,
+    });
+  }
+);
 
-const updateMyProfile = catchAsync(async (req: Request, res: Response) => {
-  const user = req.user;
-  console.log("user, payload",user, req.file);
-  const result = await UserService.updateMyProfile(user, req);
-  sendResponse(res, {
-    statusCode: status.OK,
-    success: true,
-    message: "Profile Updated Successfully",
-    data: result,
-  });
-});
+const updateMyProfile = catchAsync(
+  async (req: Request & { user?: IAuthUser }, res: Response) => {
+    const user = req.user;
+    const result = await UserService.updateMyProfile(user as IAuthUser, req);
+    sendResponse(res, {
+      statusCode: status.OK,
+      success: true,
+      message: "Profile Updated Successfully",
+      data: result,
+    });
+  }
+);
 
 export const UserController = {
   createAdmin,
