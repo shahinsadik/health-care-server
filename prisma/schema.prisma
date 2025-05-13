@@ -59,11 +59,12 @@ model Doctor {
   currentWorkingPlace String
   designation         String
   isDeleted           Boolean             @default(false)
-  // averageRating       Float
+  averageRating       Float               @default(0.0)
   createdAt           DateTime            @default(now())
   updatedAt           DateTime            @updatedAt
   user                User                @relation(fields: [email], references: [email])
   doctorSpecialties   DoctorSpecialties[]
+  Review              Review[]
 
   @@map("doctors")
 }
@@ -79,7 +80,8 @@ model Patient {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  user User @relation(references: [email], fields: [email])
+  user   User     @relation(references: [email], fields: [email])
+  Review Review[]
 
   @@map("patients")
 }
@@ -101,6 +103,24 @@ model DoctorSpecialties {
 
   @@id([specialtiesId, doctorId])
   @@map("doctor_specialties")
+}
+
+model Review {
+  id        String  @id @default(uuid())
+  patientId String
+  patient   Patient @relation(fields: [patientId], references: [id])
+
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id])
+
+  appointmentId String @unique
+
+  rating    Float
+  comment   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("reviews")
 }
 
 enum UserRole {

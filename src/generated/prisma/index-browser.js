@@ -157,6 +157,7 @@ exports.Prisma.DoctorScalarFieldEnum = {
   currentWorkingPlace: 'currentWorkingPlace',
   designation: 'designation',
   isDeleted: 'isDeleted',
+  averageRating: 'averageRating',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -182,6 +183,17 @@ exports.Prisma.SpecialtiesScalarFieldEnum = {
 exports.Prisma.DoctorSpecialtiesScalarFieldEnum = {
   specialtiesId: 'specialtiesId',
   doctorId: 'doctorId'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  patientId: 'patientId',
+  doctorId: 'doctorId',
+  appointmentId: 'appointmentId',
+  rating: 'rating',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -222,7 +234,8 @@ exports.Prisma.ModelName = {
   Doctor: 'Doctor',
   Patient: 'Patient',
   Specialties: 'Specialties',
-  DoctorSpecialties: 'DoctorSpecialties'
+  DoctorSpecialties: 'DoctorSpecialties',
+  Review: 'Review'
 };
 
 /**
