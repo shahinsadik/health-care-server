@@ -91,13 +91,24 @@ const changeProfileStatus = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getMyProfile = catchAsync(async (req: Request, res: Response) => {
-
-  const user = req.user
+  const user = req.user;
   const result = await UserService.getMyProfile(user);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
     message: "Profile Fetched Successfully",
+    data: result,
+  });
+});
+
+const updateMyProfile = catchAsync(async (req: Request, res: Response) => {
+  const user = req.user;
+  console.log("user, payload",user, req.file);
+  const result = await UserService.updateMyProfile(user, req.body);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Profile Updated Successfully",
     data: result,
   });
 });
@@ -109,4 +120,5 @@ export const UserController = {
   getAllFromDB,
   changeProfileStatus,
   getMyProfile,
+  updateMyProfile,
 };
