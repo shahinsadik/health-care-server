@@ -4,6 +4,7 @@ import {
   Patient,
   Prisma,
   UserRole,
+  UserStatus,
 } from "../../../generated/prisma";
 import * as bcrypt from "bcrypt";
 import prisma from "../../../sheared/prisma";
@@ -164,9 +165,68 @@ const getAllFromDB = async (params: any, options: IPaginationsOptions) => {
   };
 };
 
+const changeProfileStatus = async (id: string, status: UserRole) => {
+  const userData = await prisma.user.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+  const updateUserStatus = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: status,
+  });
+  return updateUserStatus;
+};
+
+const getMyProfile = async (user: any) => {
+  const userInfo = await prisma.user.findUniqueOrThrow({
+    where: {
+      email: user.email,
+    },
+    select: {
+      id: true,
+      email: true,
+      role: true,
+      needPasswordChange: true,
+      status: true,
+    },
+  });
+  let profileInfo;
+  if (userInfo.role === UserRole.SUPER_ADMIN) {
+    profileInfo = await prisma.admin.findUnique({
+      where: {
+        email: userInfo.email,
+      },
+    });
+  } else if (userInfo.role === UserRole.ADMIN) {
+    profileInfo = await prisma.admin.findUnique({
+      where: {
+        email: userInfo.email,
+      },
+    });
+  } else if (userInfo.role === UserRole.DOCTOR) {
+    profileInfo = await prisma.doctor.findUnique({
+      where: {
+        email: userInfo.email,
+      },
+    });
+  } else if (userInfo.role === UserRole.PATIENT) {
+    profileInfo = await prisma.patient.findUnique({
+      where: {
+        email: userInfo.email,
+      },
+    });
+  }
+  return { ...userInfo, ...profileInfo };
+};
+
 export const UserService = {
   createAdmin,
   createDoctor,
   createPatient,
   getAllFromDB,
+  changeProfileStatus,
+  getMyProfile,
 };

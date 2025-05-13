@@ -78,9 +78,35 @@ const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const changeProfileStatus = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const result = await UserService.changeProfileStatus(id, req.body);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "User Profile Status Updated Successfully",
+    data: result,
+  });
+});
+
+const getMyProfile = catchAsync(async (req: Request, res: Response) => {
+
+  const user = req.user
+  const result = await UserService.getMyProfile(user);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Profile Fetched Successfully",
+    data: result,
+  });
+});
+
 export const UserController = {
   createAdmin,
   createDoctor,
   createPatient,
   getAllFromDB,
+  changeProfileStatus,
+  getMyProfile,
 };

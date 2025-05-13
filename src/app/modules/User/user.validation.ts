@@ -94,5 +94,6 @@ const updateStatus = z.object({
 export const UserValidation = {
   createAdmin,
   createDoctor,
-  createPatient
+  createPatient,
+  updateStatus
 };
