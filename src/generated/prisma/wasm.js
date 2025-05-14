@@ -196,6 +196,38 @@ exports.Prisma.ReviewScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PatientHealthDataScalarFieldEnum = {
+  id: 'id',
+  patientId: 'patientId',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  bloodGroup: 'bloodGroup',
+  hasAllergies: 'hasAllergies',
+  hasDiabetes: 'hasDiabetes',
+  height: 'height',
+  weight: 'weight',
+  smokingStatus: 'smokingStatus',
+  dietaryPerformances: 'dietaryPerformances',
+  pregnancyStatus: 'pregnancyStatus',
+  mentalHealthHistory: 'mentalHealthHistory',
+  immunizationStatus: 'immunizationStatus',
+  hasPastSurgery: 'hasPastSurgery',
+  recentAnxiety: 'recentAnxiety',
+  recentDepression: 'recentDepression',
+  maritalStatus: 'maritalStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MedicalReportScalarFieldEnum = {
+  id: 'id',
+  patientId: 'patientId',
+  reportName: 'reportName',
+  reportLink: 'reportLink',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -228,6 +260,22 @@ exports.Gender = exports.$Enums.Gender = {
   FEMALE: 'FEMALE'
 };
 
+exports.BloodGroup = exports.$Enums.BloodGroup = {
+  A_POSITIVE: 'A_POSITIVE',
+  A_NEGATIVE: 'A_NEGATIVE',
+  B_POSITIVE: 'B_POSITIVE',
+  B_NEGATIVE: 'B_NEGATIVE',
+  AB_POSITIVE: 'AB_POSITIVE',
+  AB_NEGATIVE: 'AB_NEGATIVE',
+  O_POSITIVE: 'O_POSITIVE',
+  O_NEGATIVE: 'O_NEGATIVE'
+};
+
+exports.MaritalStatus = exports.$Enums.MaritalStatus = {
+  MARRIED: 'MARRIED',
+  UNMARRIED: 'UNMARRIED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Admin: 'Admin',
@@ -235,7 +283,9 @@ exports.Prisma.ModelName = {
   Patient: 'Patient',
   Specialties: 'Specialties',
   DoctorSpecialties: 'DoctorSpecialties',
-  Review: 'Review'
+  Review: 'Review',
+  PatientHealthData: 'PatientHealthData',
+  MedicalReport: 'MedicalReport'
 };
 
 /**
