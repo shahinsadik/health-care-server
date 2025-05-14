@@ -9970,18 +9970,18 @@ export namespace Prisma {
     dateOfBirth: Date
     gender: $Enums.Gender
     bloodGroup: $Enums.BloodGroup
-    hasAllergies: boolean
-    hasDiabetes: boolean
+    hasAllergies: boolean | null
+    hasDiabetes: boolean | null
     height: string
     weight: string
-    smokingStatus: boolean
+    smokingStatus: boolean | null
     dietaryPerformances: string
-    pregnancyStatus: boolean
-    mentalHealthHistory: boolean
-    immunizationStatus: string
-    hasPastSurgery: boolean
-    recentAnxiety: boolean
-    recentDepression: boolean
+    pregnancyStatus: boolean | null
+    mentalHealthHistory: boolean | null
+    immunizationStatus: string | null
+    hasPastSurgery: boolean | null
+    recentAnxiety: boolean | null
+    recentDepression: boolean | null
     maritalStatus: $Enums.MaritalStatus
     createdAt: Date
     updatedAt: Date
@@ -10121,18 +10121,18 @@ export namespace Prisma {
       dateOfBirth: Date
       gender: $Enums.Gender
       bloodGroup: $Enums.BloodGroup
-      hasAllergies: boolean
-      hasDiabetes: boolean
+      hasAllergies: boolean | null
+      hasDiabetes: boolean | null
       height: string
       weight: string
-      smokingStatus: boolean
+      smokingStatus: boolean | null
       dietaryPerformances: string
-      pregnancyStatus: boolean
-      mentalHealthHistory: boolean
-      immunizationStatus: string
-      hasPastSurgery: boolean
-      recentAnxiety: boolean
-      recentDepression: boolean
+      pregnancyStatus: boolean | null
+      mentalHealthHistory: boolean | null
+      immunizationStatus: string | null
+      hasPastSurgery: boolean | null
+      recentAnxiety: boolean | null
+      recentDepression: boolean | null
       maritalStatus: $Enums.MaritalStatus
       createdAt: Date
       updatedAt: Date
@@ -12905,18 +12905,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFilter<"PatientHealthData"> | Date | string
     gender?: EnumGenderFilter<"PatientHealthData"> | $Enums.Gender
     bloodGroup?: EnumBloodGroupFilter<"PatientHealthData"> | $Enums.BloodGroup
-    hasAllergies?: BoolFilter<"PatientHealthData"> | boolean
-    hasDiabetes?: BoolFilter<"PatientHealthData"> | boolean
+    hasAllergies?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    hasDiabetes?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     height?: StringFilter<"PatientHealthData"> | string
     weight?: StringFilter<"PatientHealthData"> | string
-    smokingStatus?: BoolFilter<"PatientHealthData"> | boolean
+    smokingStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     dietaryPerformances?: StringFilter<"PatientHealthData"> | string
-    pregnancyStatus?: BoolFilter<"PatientHealthData"> | boolean
-    mentalHealthHistory?: BoolFilter<"PatientHealthData"> | boolean
-    immunizationStatus?: StringFilter<"PatientHealthData"> | string
-    hasPastSurgery?: BoolFilter<"PatientHealthData"> | boolean
-    recentAnxiety?: BoolFilter<"PatientHealthData"> | boolean
-    recentDepression?: BoolFilter<"PatientHealthData"> | boolean
+    pregnancyStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    mentalHealthHistory?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    immunizationStatus?: StringNullableFilter<"PatientHealthData"> | string | null
+    hasPastSurgery?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    recentAnxiety?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    recentDepression?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     maritalStatus?: EnumMaritalStatusFilter<"PatientHealthData"> | $Enums.MaritalStatus
     createdAt?: DateTimeFilter<"PatientHealthData"> | Date | string
     updatedAt?: DateTimeFilter<"PatientHealthData"> | Date | string
@@ -12929,18 +12929,18 @@ export namespace Prisma {
     dateOfBirth?: SortOrder
     gender?: SortOrder
     bloodGroup?: SortOrder
-    hasAllergies?: SortOrder
-    hasDiabetes?: SortOrder
+    hasAllergies?: SortOrderInput | SortOrder
+    hasDiabetes?: SortOrderInput | SortOrder
     height?: SortOrder
     weight?: SortOrder
-    smokingStatus?: SortOrder
+    smokingStatus?: SortOrderInput | SortOrder
     dietaryPerformances?: SortOrder
-    pregnancyStatus?: SortOrder
-    mentalHealthHistory?: SortOrder
-    immunizationStatus?: SortOrder
-    hasPastSurgery?: SortOrder
-    recentAnxiety?: SortOrder
-    recentDepression?: SortOrder
+    pregnancyStatus?: SortOrderInput | SortOrder
+    mentalHealthHistory?: SortOrderInput | SortOrder
+    immunizationStatus?: SortOrderInput | SortOrder
+    hasPastSurgery?: SortOrderInput | SortOrder
+    recentAnxiety?: SortOrderInput | SortOrder
+    recentDepression?: SortOrderInput | SortOrder
     maritalStatus?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12956,18 +12956,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFilter<"PatientHealthData"> | Date | string
     gender?: EnumGenderFilter<"PatientHealthData"> | $Enums.Gender
     bloodGroup?: EnumBloodGroupFilter<"PatientHealthData"> | $Enums.BloodGroup
-    hasAllergies?: BoolFilter<"PatientHealthData"> | boolean
-    hasDiabetes?: BoolFilter<"PatientHealthData"> | boolean
+    hasAllergies?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    hasDiabetes?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     height?: StringFilter<"PatientHealthData"> | string
     weight?: StringFilter<"PatientHealthData"> | string
-    smokingStatus?: BoolFilter<"PatientHealthData"> | boolean
+    smokingStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     dietaryPerformances?: StringFilter<"PatientHealthData"> | string
-    pregnancyStatus?: BoolFilter<"PatientHealthData"> | boolean
-    mentalHealthHistory?: BoolFilter<"PatientHealthData"> | boolean
-    immunizationStatus?: StringFilter<"PatientHealthData"> | string
-    hasPastSurgery?: BoolFilter<"PatientHealthData"> | boolean
-    recentAnxiety?: BoolFilter<"PatientHealthData"> | boolean
-    recentDepression?: BoolFilter<"PatientHealthData"> | boolean
+    pregnancyStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    mentalHealthHistory?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    immunizationStatus?: StringNullableFilter<"PatientHealthData"> | string | null
+    hasPastSurgery?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    recentAnxiety?: BoolNullableFilter<"PatientHealthData"> | boolean | null
+    recentDepression?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     maritalStatus?: EnumMaritalStatusFilter<"PatientHealthData"> | $Enums.MaritalStatus
     createdAt?: DateTimeFilter<"PatientHealthData"> | Date | string
     updatedAt?: DateTimeFilter<"PatientHealthData"> | Date | string
@@ -12980,18 +12980,18 @@ export namespace Prisma {
     dateOfBirth?: SortOrder
     gender?: SortOrder
     bloodGroup?: SortOrder
-    hasAllergies?: SortOrder
-    hasDiabetes?: SortOrder
+    hasAllergies?: SortOrderInput | SortOrder
+    hasDiabetes?: SortOrderInput | SortOrder
     height?: SortOrder
     weight?: SortOrder
-    smokingStatus?: SortOrder
+    smokingStatus?: SortOrderInput | SortOrder
     dietaryPerformances?: SortOrder
-    pregnancyStatus?: SortOrder
-    mentalHealthHistory?: SortOrder
-    immunizationStatus?: SortOrder
-    hasPastSurgery?: SortOrder
-    recentAnxiety?: SortOrder
-    recentDepression?: SortOrder
+    pregnancyStatus?: SortOrderInput | SortOrder
+    mentalHealthHistory?: SortOrderInput | SortOrder
+    immunizationStatus?: SortOrderInput | SortOrder
+    hasPastSurgery?: SortOrderInput | SortOrder
+    recentAnxiety?: SortOrderInput | SortOrder
+    recentDepression?: SortOrderInput | SortOrder
     maritalStatus?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13009,18 +13009,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeWithAggregatesFilter<"PatientHealthData"> | Date | string
     gender?: EnumGenderWithAggregatesFilter<"PatientHealthData"> | $Enums.Gender
     bloodGroup?: EnumBloodGroupWithAggregatesFilter<"PatientHealthData"> | $Enums.BloodGroup
-    hasAllergies?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
-    hasDiabetes?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
+    hasAllergies?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
+    hasDiabetes?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
     height?: StringWithAggregatesFilter<"PatientHealthData"> | string
     weight?: StringWithAggregatesFilter<"PatientHealthData"> | string
-    smokingStatus?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
+    smokingStatus?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
     dietaryPerformances?: StringWithAggregatesFilter<"PatientHealthData"> | string
-    pregnancyStatus?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
-    mentalHealthHistory?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
-    immunizationStatus?: StringWithAggregatesFilter<"PatientHealthData"> | string
-    hasPastSurgery?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
-    recentAnxiety?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
-    recentDepression?: BoolWithAggregatesFilter<"PatientHealthData"> | boolean
+    pregnancyStatus?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
+    mentalHealthHistory?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
+    immunizationStatus?: StringNullableWithAggregatesFilter<"PatientHealthData"> | string | null
+    hasPastSurgery?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
+    recentAnxiety?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
+    recentDepression?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
     maritalStatus?: EnumMaritalStatusWithAggregatesFilter<"PatientHealthData"> | $Enums.MaritalStatus
     createdAt?: DateTimeWithAggregatesFilter<"PatientHealthData"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PatientHealthData"> | Date | string
@@ -13653,19 +13653,19 @@ export namespace Prisma {
     dateOfBirth: Date | string
     gender: $Enums.Gender
     bloodGroup: $Enums.BloodGroup
-    hasAllergies: boolean
-    hasDiabetes: boolean
+    hasAllergies?: boolean | null
+    hasDiabetes?: boolean | null
     height: string
     weight: string
-    smokingStatus: boolean
+    smokingStatus?: boolean | null
     dietaryPerformances: string
-    pregnancyStatus: boolean
-    mentalHealthHistory: boolean
-    immunizationStatus: string
-    hasPastSurgery: boolean
-    recentAnxiety: boolean
-    recentDepression: boolean
-    maritalStatus: $Enums.MaritalStatus
+    pregnancyStatus?: boolean | null
+    mentalHealthHistory?: boolean | null
+    immunizationStatus?: string | null
+    hasPastSurgery?: boolean | null
+    recentAnxiety?: boolean | null
+    recentDepression?: boolean | null
+    maritalStatus?: $Enums.MaritalStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutPatientHealthDataInput
@@ -13677,19 +13677,19 @@ export namespace Prisma {
     dateOfBirth: Date | string
     gender: $Enums.Gender
     bloodGroup: $Enums.BloodGroup
-    hasAllergies: boolean
-    hasDiabetes: boolean
+    hasAllergies?: boolean | null
+    hasDiabetes?: boolean | null
     height: string
     weight: string
-    smokingStatus: boolean
+    smokingStatus?: boolean | null
     dietaryPerformances: string
-    pregnancyStatus: boolean
-    mentalHealthHistory: boolean
-    immunizationStatus: string
-    hasPastSurgery: boolean
-    recentAnxiety: boolean
-    recentDepression: boolean
-    maritalStatus: $Enums.MaritalStatus
+    pregnancyStatus?: boolean | null
+    mentalHealthHistory?: boolean | null
+    immunizationStatus?: string | null
+    hasPastSurgery?: boolean | null
+    recentAnxiety?: boolean | null
+    recentDepression?: boolean | null
+    maritalStatus?: $Enums.MaritalStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13699,18 +13699,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
     bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: BoolFieldUpdateOperationsInput | boolean
-    hasDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: BoolFieldUpdateOperationsInput | boolean
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dietaryPerformances?: StringFieldUpdateOperationsInput | string
-    pregnancyStatus?: BoolFieldUpdateOperationsInput | boolean
-    mentalHealthHistory?: BoolFieldUpdateOperationsInput | boolean
-    immunizationStatus?: StringFieldUpdateOperationsInput | string
-    hasPastSurgery?: BoolFieldUpdateOperationsInput | boolean
-    recentAnxiety?: BoolFieldUpdateOperationsInput | boolean
-    recentDepression?: BoolFieldUpdateOperationsInput | boolean
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
     maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13723,18 +13723,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
     bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: BoolFieldUpdateOperationsInput | boolean
-    hasDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: BoolFieldUpdateOperationsInput | boolean
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dietaryPerformances?: StringFieldUpdateOperationsInput | string
-    pregnancyStatus?: BoolFieldUpdateOperationsInput | boolean
-    mentalHealthHistory?: BoolFieldUpdateOperationsInput | boolean
-    immunizationStatus?: StringFieldUpdateOperationsInput | string
-    hasPastSurgery?: BoolFieldUpdateOperationsInput | boolean
-    recentAnxiety?: BoolFieldUpdateOperationsInput | boolean
-    recentDepression?: BoolFieldUpdateOperationsInput | boolean
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
     maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13746,19 +13746,19 @@ export namespace Prisma {
     dateOfBirth: Date | string
     gender: $Enums.Gender
     bloodGroup: $Enums.BloodGroup
-    hasAllergies: boolean
-    hasDiabetes: boolean
+    hasAllergies?: boolean | null
+    hasDiabetes?: boolean | null
     height: string
     weight: string
-    smokingStatus: boolean
+    smokingStatus?: boolean | null
     dietaryPerformances: string
-    pregnancyStatus: boolean
-    mentalHealthHistory: boolean
-    immunizationStatus: string
-    hasPastSurgery: boolean
-    recentAnxiety: boolean
-    recentDepression: boolean
-    maritalStatus: $Enums.MaritalStatus
+    pregnancyStatus?: boolean | null
+    mentalHealthHistory?: boolean | null
+    immunizationStatus?: string | null
+    hasPastSurgery?: boolean | null
+    recentAnxiety?: boolean | null
+    recentDepression?: boolean | null
+    maritalStatus?: $Enums.MaritalStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13768,18 +13768,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
     bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: BoolFieldUpdateOperationsInput | boolean
-    hasDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: BoolFieldUpdateOperationsInput | boolean
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dietaryPerformances?: StringFieldUpdateOperationsInput | string
-    pregnancyStatus?: BoolFieldUpdateOperationsInput | boolean
-    mentalHealthHistory?: BoolFieldUpdateOperationsInput | boolean
-    immunizationStatus?: StringFieldUpdateOperationsInput | string
-    hasPastSurgery?: BoolFieldUpdateOperationsInput | boolean
-    recentAnxiety?: BoolFieldUpdateOperationsInput | boolean
-    recentDepression?: BoolFieldUpdateOperationsInput | boolean
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
     maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13791,18 +13791,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
     bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: BoolFieldUpdateOperationsInput | boolean
-    hasDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: BoolFieldUpdateOperationsInput | boolean
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dietaryPerformances?: StringFieldUpdateOperationsInput | string
-    pregnancyStatus?: BoolFieldUpdateOperationsInput | boolean
-    mentalHealthHistory?: BoolFieldUpdateOperationsInput | boolean
-    immunizationStatus?: StringFieldUpdateOperationsInput | string
-    hasPastSurgery?: BoolFieldUpdateOperationsInput | boolean
-    recentAnxiety?: BoolFieldUpdateOperationsInput | boolean
-    recentDepression?: BoolFieldUpdateOperationsInput | boolean
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
     maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14414,6 +14414,11 @@ export namespace Prisma {
     not?: NestedEnumBloodGroupFilter<$PrismaModel> | $Enums.BloodGroup
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type EnumMaritalStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
     in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
@@ -14498,6 +14503,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumBloodGroupFilter<$PrismaModel>
     _max?: NestedEnumBloodGroupFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type EnumMaritalStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -15027,6 +15040,10 @@ export namespace Prisma {
     set?: $Enums.BloodGroup
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type EnumMaritalStatusFieldUpdateOperationsInput = {
     set?: $Enums.MaritalStatus
   }
@@ -15276,6 +15293,11 @@ export namespace Prisma {
     not?: NestedEnumBloodGroupFilter<$PrismaModel> | $Enums.BloodGroup
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type NestedEnumMaritalStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
     in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
@@ -15291,6 +15313,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumBloodGroupFilter<$PrismaModel>
     _max?: NestedEnumBloodGroupFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumMaritalStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -15835,19 +15865,19 @@ export namespace Prisma {
     dateOfBirth: Date | string
     gender: $Enums.Gender
     bloodGroup: $Enums.BloodGroup
-    hasAllergies: boolean
-    hasDiabetes: boolean
+    hasAllergies?: boolean | null
+    hasDiabetes?: boolean | null
     height: string
     weight: string
-    smokingStatus: boolean
+    smokingStatus?: boolean | null
     dietaryPerformances: string
-    pregnancyStatus: boolean
-    mentalHealthHistory: boolean
-    immunizationStatus: string
-    hasPastSurgery: boolean
-    recentAnxiety: boolean
-    recentDepression: boolean
-    maritalStatus: $Enums.MaritalStatus
+    pregnancyStatus?: boolean | null
+    mentalHealthHistory?: boolean | null
+    immunizationStatus?: string | null
+    hasPastSurgery?: boolean | null
+    recentAnxiety?: boolean | null
+    recentDepression?: boolean | null
+    maritalStatus?: $Enums.MaritalStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15857,19 +15887,19 @@ export namespace Prisma {
     dateOfBirth: Date | string
     gender: $Enums.Gender
     bloodGroup: $Enums.BloodGroup
-    hasAllergies: boolean
-    hasDiabetes: boolean
+    hasAllergies?: boolean | null
+    hasDiabetes?: boolean | null
     height: string
     weight: string
-    smokingStatus: boolean
+    smokingStatus?: boolean | null
     dietaryPerformances: string
-    pregnancyStatus: boolean
-    mentalHealthHistory: boolean
-    immunizationStatus: string
-    hasPastSurgery: boolean
-    recentAnxiety: boolean
-    recentDepression: boolean
-    maritalStatus: $Enums.MaritalStatus
+    pregnancyStatus?: boolean | null
+    mentalHealthHistory?: boolean | null
+    immunizationStatus?: string | null
+    hasPastSurgery?: boolean | null
+    recentAnxiety?: boolean | null
+    recentDepression?: boolean | null
+    maritalStatus?: $Enums.MaritalStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15974,18 +16004,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
     bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: BoolFieldUpdateOperationsInput | boolean
-    hasDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: BoolFieldUpdateOperationsInput | boolean
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dietaryPerformances?: StringFieldUpdateOperationsInput | string
-    pregnancyStatus?: BoolFieldUpdateOperationsInput | boolean
-    mentalHealthHistory?: BoolFieldUpdateOperationsInput | boolean
-    immunizationStatus?: StringFieldUpdateOperationsInput | string
-    hasPastSurgery?: BoolFieldUpdateOperationsInput | boolean
-    recentAnxiety?: BoolFieldUpdateOperationsInput | boolean
-    recentDepression?: BoolFieldUpdateOperationsInput | boolean
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
     maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15996,18 +16026,18 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
     bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: BoolFieldUpdateOperationsInput | boolean
-    hasDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: BoolFieldUpdateOperationsInput | boolean
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dietaryPerformances?: StringFieldUpdateOperationsInput | string
-    pregnancyStatus?: BoolFieldUpdateOperationsInput | boolean
-    mentalHealthHistory?: BoolFieldUpdateOperationsInput | boolean
-    immunizationStatus?: StringFieldUpdateOperationsInput | string
-    hasPastSurgery?: BoolFieldUpdateOperationsInput | boolean
-    recentAnxiety?: BoolFieldUpdateOperationsInput | boolean
-    recentDepression?: BoolFieldUpdateOperationsInput | boolean
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgery?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
     maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
