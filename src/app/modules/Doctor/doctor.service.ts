@@ -117,7 +117,7 @@ const updateIntoDB = async (id: string, payload: IDoctorUpdate) => {
 
   const doctorInfo = await prisma.doctor.findUniqueOrThrow({
     where: {
-      id
+      id,
     },
   });
 
@@ -149,10 +149,6 @@ const updateIntoDB = async (id: string, payload: IDoctorUpdate) => {
         (specialty) => !specialty.isDeleted
       );
 
-
-      console.log(createSpecialtiesIds);
-
-      
       for (const specialty of createSpecialtiesIds) {
         await transactionClient.doctorSpecialties.create({
           data: {
