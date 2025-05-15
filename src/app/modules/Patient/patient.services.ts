@@ -111,6 +111,7 @@ const updateIntoDB = async (
         medicalReport: true,
       },
     });
+    
 
     // create or update patient health data
     if (patientHealthData) {
