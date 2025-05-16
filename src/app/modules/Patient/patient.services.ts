@@ -117,9 +117,9 @@ const updateIntoDB = async (
     if (patientHealthData) {
       await transactionClient.patientHealthData.upsert({
         where: {
-          patientId: patientInfo.id,
+          patientId: patientInfo.id ,
         },
-        update: patientHealthData,
+        update: patientHealthData ,
         create: { ...patientHealthData, patientId: patientInfo.id },
       });
     }
