@@ -1,7 +1,10 @@
-import { addHours, format } from "date-fns";
+import { addHours, addMinutes, format } from "date-fns";
+import prisma from "../../../sheared/prisma";
 
 const insertIntoDB = async (payload: any) => {
   const { startDate, endDate, startTime, endTime } = payload;
+  const intervalTime = 30;
+  const schedules = [];
   const currentDate = new Date(startDate);
   const lastDate = new Date(endDate);
   while (currentDate <= lastDate) {
@@ -13,18 +16,27 @@ const insertIntoDB = async (payload: any) => {
     );
     const endDateTime = new Date(
       addHours(
-        `${format(lastDate, "yyyy-MM-dd")}`,
+        `${format(currentDate, "yyyy-MM-dd")}`,
         Number(endTime.split(":")[0])
       )
     );
 
-    while (startDateTime <= endDateTime) {
-      
-    }
-    console.log(endDateTime);
-  }
-};
+    while (startDateTime < endDateTime) {
+      const scheduleData = {
+        startDateTime: startDateTime,
+        endDateTime: addMinutes(startDateTime, intervalTime),
+      };
 
+      const result = await prisma.schedule.create({
+        data: scheduleData,
+      });
+      schedules.push(result);
+      startDateTime.setMinutes(startDateTime.getMinutes() + intervalTime);
+    }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+  return schedules;
+};
 // const getAllFromDB = async () => {
 //   return await prisma.specialties.findMany();
 // };
@@ -37,6 +49,8 @@ const insertIntoDB = async (payload: any) => {
 //   });
 //   return result;
 // };
+
+
 export const ScheduleService = {
   insertIntoDB,
 };
