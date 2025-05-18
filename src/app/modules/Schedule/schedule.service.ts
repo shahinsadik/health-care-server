@@ -7,6 +7,8 @@ const insertIntoDB = async (payload: any) => {
   const schedules = [];
   const currentDate = new Date(startDate);
   const lastDate = new Date(endDate);
+
+  
   while (currentDate <= lastDate) {
     const startDateTime = new Date(
       addHours(
