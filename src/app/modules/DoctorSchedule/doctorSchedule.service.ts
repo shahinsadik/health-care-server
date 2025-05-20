@@ -16,6 +16,7 @@ const insertIntoDB = async (user: any, payload: { scheduleIds: string[] }) => {
   });
   return result;
 };
+
 export const DoctorScheduleService = {
   insertIntoDB,
 };

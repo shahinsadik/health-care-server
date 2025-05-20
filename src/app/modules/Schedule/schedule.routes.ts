@@ -10,5 +10,6 @@ router.post(
   auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
   ScheduleController.insertIntoDB
 );
+router.get("/", ScheduleController.getAllFromDB);
 
 export const ScheduleRoutes = router;
