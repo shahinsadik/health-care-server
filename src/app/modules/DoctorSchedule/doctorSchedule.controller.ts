@@ -4,6 +4,7 @@ import sendResponse from "../../../sheared/sendResponse";
 import status from "http-status";
 import { DoctorScheduleService } from "./doctorSchedule.service";
 import { IAuthUser } from "../../interfaces/common";
+import pick from "../../../sheared/pick";
 
 const insertIntoDB = catchAsync(
   async (req: Request & { user?: IAuthUser }, res: Response) => {
@@ -19,7 +20,25 @@ const insertIntoDB = catchAsync(
     });
   }
 );
+const getMySchedule = catchAsync(
+  async (req: Request & { user?: IAuthUser }, res: Response) => {
+    const filters = pick(req.query, ["startDate", "endDate", "isBooked"]);
+    const options = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]);
+    const user = req.user;
+    const result = await DoctorScheduleService.getMySchedule(
+      filters,
+      options,
+      user as IAuthUser
+    );
 
+    sendResponse(res, {
+      success: true,
+      statusCode: status.OK,
+      message: "My Schedule fetched successfully",
+      data: result,
+    });
+  }
+);
 export const DoctorScheduleController = {
-  insertIntoDB,
+  insertIntoDB,getMySchedule
 };

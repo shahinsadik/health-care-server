@@ -111,7 +111,6 @@ const getAllFromDB = async (
   const doctorScheduleIds = doctorSchedules.map(
     (schedule) => schedule.scheduleId
   );
-  console.log("doctorScheduleIds", doctorScheduleIds);
 
   const result = await prisma.schedule.findMany({
     where: { ...whereConditions, id: { notIn: doctorScheduleIds } },
