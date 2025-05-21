@@ -4,6 +4,7 @@ import status from "http-status";
 import catchAsync from "../../../sheared/catchAsync";
 import { ScheduleService } from "./schedule.service";
 import pick from "../../../sheared/pick";
+import { IAuthUser } from "../../interfaces/common";
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   const result = await ScheduleService.insertIntoDB(req.body);
@@ -16,18 +17,25 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const filters = pick(req.query, ["startDate", "endDate"]);
-  const options = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]);
-  const result = await ScheduleService.getAllFromDB(filters, options);
+const getAllFromDB = catchAsync(
+  async (req: Request & { user?: IAuthUser }, res: Response) => {
+    const filters = pick(req.query, ["startDate", "endDate"]);
+    const options = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]);
+    const user = req.user;
+    const result = await ScheduleService.getAllFromDB(
+      filters,
+      options,
+      user as IAuthUser
+    );
 
-  sendResponse(res, {
-    success: true,
-    statusCode: status.OK,
-    message: "Schedule fetched successfully",
-    data: result,
-  });
-});
+    sendResponse(res, {
+      success: true,
+      statusCode: status.OK,
+      message: "Schedule fetched successfully",
+      data: result,
+    });
+  }
+);
 export const ScheduleController = {
   insertIntoDB,
   getAllFromDB,
