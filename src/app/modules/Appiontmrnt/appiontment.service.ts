@@ -21,7 +21,7 @@ const createAppointment = async (user: IAuthUser, payload: any) => {
       isBooked: false,
     },
   });
-  const videoCallingId : string = uuidv4();
+  const videoCallingId: string = uuidv4();
   const result = await prisma.$transaction(async (tx) => {
     const appointmentData = await tx.appointment.create({
       data: {
@@ -49,14 +49,24 @@ const createAppointment = async (user: IAuthUser, payload: any) => {
       },
     });
     const today = new Date();
-    const transactionId = "SS-Health_Care-"+today.getFullYear()+"-"+today.getMonth+"-"+today.getHours()+"-"+today.getMinutes();
+    const transactionId =
+      "SS-Health-Care-" +
+      today.getFullYear() +
+      "-" +
+      today.getMonth() +
+      "-" +
+      today.getDay() +
+      "-" +
+      today.getHours() +
+      "-" +
+      today.getMinutes();
     await tx.payment.create({
       data: {
         appointmentId: appointmentData.id,
         amount: doctorData.appointmentFee,
         transactionId,
       },
-    })
+    });
     return appointmentData;
   });
 };
