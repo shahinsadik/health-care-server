@@ -257,9 +257,25 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  amount: 'amount',
+  transactionId: 'transactionId',
+  status: 'status',
+  paymentGatewayData: 'paymentGatewayData',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -270,6 +286,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.UserRole = exports.$Enums.UserRole = {
   SUPER_ADMIN: 'SUPER_ADMIN',
@@ -329,7 +351,8 @@ exports.Prisma.ModelName = {
   MedicalReport: 'MedicalReport',
   Schedule: 'Schedule',
   DoctorSchedules: 'DoctorSchedules',
-  Appointment: 'Appointment'
+  Appointment: 'Appointment',
+  Payment: 'Payment'
 };
 
 /**
