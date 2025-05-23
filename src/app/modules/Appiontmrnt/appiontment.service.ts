@@ -4,7 +4,8 @@ import { IAuthUser } from "../../interfaces/common";
 import { v4 as uuidv4 } from "uuid";
 import { IPaginationsOptions } from "../../interfaces/pagination";
 import { paginationHelper } from "../../../helpers/paginationHelper";
-import { Prisma } from "../../../generated/prisma";
+import { Prisma, UserRole } from "../../../generated/prisma";
+import e from "express";
 const createAppointment = async (user: IAuthUser, payload: any) => {
   const patientData = await prisma.patient.findUniqueOrThrow({
     where: {
@@ -83,6 +84,20 @@ const getMyAppointment = async (
   const { ...filterData } = filters;
   const andConditions: Prisma.AppointmentWhereInput[] = [];
 
+  if (user?.role === UserRole.PATIENT) {
+    andConditions.push({
+      patient: {
+        email: user?.email,
+      },
+    });
+  } else if (user?.role === UserRole.DOCTOR) {
+    andConditions.push({
+      doctor: {
+        email: user?.email,
+      },
+    });
+  }
+
   if (Object.keys(filterData).length > 0) {
     const filterConditions = Object.keys(filterData).map((key) => ({
       [key]: {
@@ -103,10 +118,18 @@ const getMyAppointment = async (
       options.sortBy && options.sortOrder
         ? { [options.sortBy]: options.sortOrder }
         : { createdAt: "desc" },
-    include: {
-      doctor: true,
-      schedule: true,
-    },
+    include:
+      user?.role === UserRole.PATIENT
+        ? {
+            doctor: true,
+            schedule: true,
+          }
+        : {
+            patient: {
+              include: { medicalReport: true, patientHealthData: true },
+            },
+            schedule: true,
+          },
   });
 
   const total = await prisma.appointment.count({
