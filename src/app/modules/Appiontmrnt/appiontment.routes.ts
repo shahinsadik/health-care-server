@@ -4,6 +4,16 @@ import auth from "../../middlewares/auth";
 import { UserRole } from "../../../generated/prisma";
 const router = express.Router();
 
-router.post("/",auth(UserRole.PATIENT) ,AppointmentController.createAppointment)
+router.get(
+  "/my-appointment",
+  auth(UserRole.PATIENT),
+  AppointmentController.getMyAppointment
+);
+
+router.post(
+  "/",
+  auth(UserRole.PATIENT),
+  AppointmentController.createAppointment
+);
 
 export const appointmentRoutes = router;
