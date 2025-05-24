@@ -268,6 +268,17 @@ exports.Prisma.PaymentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PrescriptionScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  instructions: 'instructions',
+  followUpDate: 'followUpDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -352,7 +363,8 @@ exports.Prisma.ModelName = {
   Schedule: 'Schedule',
   DoctorSchedules: 'DoctorSchedules',
   Appointment: 'Appointment',
-  Payment: 'Payment'
+  Payment: 'Payment',
+  Prescription: 'Prescription'
 };
 
 /**
