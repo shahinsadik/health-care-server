@@ -4,8 +4,11 @@ import sendResponse from "../../../sheared/sendResponse";
 import status from "http-status";
 import { PaymentService } from "./payment.service";
 
+
 const initPayment = catchAsync(async (req: Request, res: Response) => {
-  const result = await PaymentService.initPayment();
+  const { appointmentId } = req.params;
+ 
+  const result = await PaymentService.initPayment(appointmentId);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
