@@ -1,5 +1,4 @@
-import axios from "axios";
-import config from "../../../config";
+
 import prisma from "../../../sheared/prisma";
 import { SSLService } from "../SSL/ssl.service";
 import { PaymentStatus } from "../../../generated/prisma";
@@ -17,7 +16,7 @@ const initPayment = async (appointmentId: string) => {
       },
     },
   });
-  const initPaymentData = {
+  const initPaymentData  = {
     amount: paymentData.amount,
     transactionId: paymentData.transactionId,
     name: paymentData.appointment.patient.name,
