@@ -37,6 +37,8 @@ const initPayment = async (paymentData: any) => {
       ship_postcode: 1000,
       ship_country: "N/A",
     };
+    
+
     const response = await axios({
       method: "POST",
       url: config.ssl.ssl_payment_url,

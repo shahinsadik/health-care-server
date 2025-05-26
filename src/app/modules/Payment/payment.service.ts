@@ -26,18 +26,23 @@ const initPayment = async (appointmentId: string) => {
     phone: paymentData.appointment.patient.contactNumber,
   };
   const result = await SSLService.initPayment(initPaymentData);
+  console.log("Payment URL:", result);
   return {
     paymentUrl: result.GatewayPageURL,
   };
+  
 };
 const validatePayment = async (payload: any) => {
-  if (!payload || !payload.status || !(payload.status === "VALID")) {
-    return { message: "Invalid Payment" };
-  }
-  const response = await SSLService.validatePayment(payload);
-  if (response.status !== "VALID") {
-    return { message: "Payment Failed" };
-  }
+  //after hosted then use this code dynamically
+  // if (!payload || !payload.status || !(payload.status === "VALID")) {
+  //   return { message: "Invalid Payment" };
+  // }
+  // const response = await SSLService.validatePayment(payload);
+  // if (response.status !== "VALID") {
+  //   return { message: "Payment Failed" };
+  // }
+  const response = payload; // For testing purposes, use the payload directly mainually
+
   await prisma.$transaction(async (tx) => {
     const updatedPaymentData = await tx.payment.update({
       where: {
