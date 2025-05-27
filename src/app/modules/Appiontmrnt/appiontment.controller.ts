@@ -5,6 +5,7 @@ import status from "http-status";
 import { AppointmentService } from "./appiontment.service";
 import { IAuthUser } from "../../interfaces/common";
 import pick from "../../../sheared/pick";
+
 import { appointmentFilterableFields } from "./appointment.constant";
 
 const createAppointment = catchAsync(
