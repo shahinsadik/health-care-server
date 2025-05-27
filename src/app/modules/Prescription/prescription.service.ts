@@ -9,6 +9,9 @@ const insertIntoDb = async (user: IAuthUser, payload: any) => {
       status: AppointmentStatus.COMPLETED,
       paymentStatus: PaymentStatus.PAID,
     },
+    include: {
+      doctor: true,
+    },
   });
   console.log("Data to insert:", appointmentData);
 };
