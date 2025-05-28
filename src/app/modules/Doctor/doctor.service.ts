@@ -72,7 +72,7 @@ const getAllFromDB = async (
           specialties: true,
         },
       },
-      Review: {
+      review: {
         select: {
           rating: true,
         },

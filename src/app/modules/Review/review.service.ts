@@ -21,16 +21,31 @@ const insertIntoDB = async (user: IAuthUser, payload: any) => {
   if (!(patientDta.id === appointmentData.patientId)) {
     throw new ApiError(status.BAD_GATEWAY, "Patient not found");
   }
-  const result = await prisma.review.create({
-    data: {
-      patientId: appointmentData.patientId,
-      doctorId: appointmentData.doctorId,
-      appointmentId: payload.appointmentId,
-      rating: payload.rating,
-      comment: payload.comment,
-    },
+  return await prisma.$transaction(async (tx) => {
+    const result = await tx.review.create({
+      data: {
+        patientId: appointmentData.patientId,
+        doctorId: appointmentData.doctorId,
+        appointmentId: payload.appointmentId,
+        rating: payload.rating,
+        comment: payload.comment,
+      },
+    });
+    const averageRating = await tx.review.aggregate({
+      _avg: {
+        rating: true,
+      },
+    });
+    await tx.doctor.update({
+      where: {
+        id: result.doctorId,
+      },
+      data: {
+        averageRating: averageRating._avg.rating as number,
+      },
+    });
+    return result;
   });
-  return result;
 };
 const getAllFromDB = async (filters: any, options: IPaginationsOptions) => {
   const { limit, page, skip } = paginationHelper.calculatePagination(options);
