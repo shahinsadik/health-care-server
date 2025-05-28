@@ -10680,7 +10680,7 @@ export namespace Prisma {
     height: string
     weight: string
     smokingStatus: boolean | null
-    dietaryPerformances: string
+    dietaryPerformances: string | null
     pregnancyStatus: boolean | null
     mentalHealthHistory: boolean | null
     immunizationStatus: string | null
@@ -10831,7 +10831,7 @@ export namespace Prisma {
       height: string
       weight: string
       smokingStatus: boolean | null
-      dietaryPerformances: string
+      dietaryPerformances: string | null
       pregnancyStatus: boolean | null
       mentalHealthHistory: boolean | null
       immunizationStatus: string | null
@@ -19415,7 +19415,7 @@ export namespace Prisma {
     height?: StringFilter<"PatientHealthData"> | string
     weight?: StringFilter<"PatientHealthData"> | string
     smokingStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    dietaryPerformances?: StringFilter<"PatientHealthData"> | string
+    dietaryPerformances?: StringNullableFilter<"PatientHealthData"> | string | null
     pregnancyStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     mentalHealthHistory?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     immunizationStatus?: StringNullableFilter<"PatientHealthData"> | string | null
@@ -19439,7 +19439,7 @@ export namespace Prisma {
     height?: SortOrder
     weight?: SortOrder
     smokingStatus?: SortOrderInput | SortOrder
-    dietaryPerformances?: SortOrder
+    dietaryPerformances?: SortOrderInput | SortOrder
     pregnancyStatus?: SortOrderInput | SortOrder
     mentalHealthHistory?: SortOrderInput | SortOrder
     immunizationStatus?: SortOrderInput | SortOrder
@@ -19466,7 +19466,7 @@ export namespace Prisma {
     height?: StringFilter<"PatientHealthData"> | string
     weight?: StringFilter<"PatientHealthData"> | string
     smokingStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    dietaryPerformances?: StringFilter<"PatientHealthData"> | string
+    dietaryPerformances?: StringNullableFilter<"PatientHealthData"> | string | null
     pregnancyStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     mentalHealthHistory?: BoolNullableFilter<"PatientHealthData"> | boolean | null
     immunizationStatus?: StringNullableFilter<"PatientHealthData"> | string | null
@@ -19490,7 +19490,7 @@ export namespace Prisma {
     height?: SortOrder
     weight?: SortOrder
     smokingStatus?: SortOrderInput | SortOrder
-    dietaryPerformances?: SortOrder
+    dietaryPerformances?: SortOrderInput | SortOrder
     pregnancyStatus?: SortOrderInput | SortOrder
     mentalHealthHistory?: SortOrderInput | SortOrder
     immunizationStatus?: SortOrderInput | SortOrder
@@ -19519,7 +19519,7 @@ export namespace Prisma {
     height?: StringWithAggregatesFilter<"PatientHealthData"> | string
     weight?: StringWithAggregatesFilter<"PatientHealthData"> | string
     smokingStatus?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
-    dietaryPerformances?: StringWithAggregatesFilter<"PatientHealthData"> | string
+    dietaryPerformances?: StringNullableWithAggregatesFilter<"PatientHealthData"> | string | null
     pregnancyStatus?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
     mentalHealthHistory?: BoolNullableWithAggregatesFilter<"PatientHealthData"> | boolean | null
     immunizationStatus?: StringNullableWithAggregatesFilter<"PatientHealthData"> | string | null
@@ -20548,7 +20548,7 @@ export namespace Prisma {
     height: string
     weight: string
     smokingStatus?: boolean | null
-    dietaryPerformances: string
+    dietaryPerformances?: string | null
     pregnancyStatus?: boolean | null
     mentalHealthHistory?: boolean | null
     immunizationStatus?: string | null
@@ -20572,7 +20572,7 @@ export namespace Prisma {
     height: string
     weight: string
     smokingStatus?: boolean | null
-    dietaryPerformances: string
+    dietaryPerformances?: string | null
     pregnancyStatus?: boolean | null
     mentalHealthHistory?: boolean | null
     immunizationStatus?: string | null
@@ -20594,7 +20594,7 @@ export namespace Prisma {
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
     smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPerformances?: StringFieldUpdateOperationsInput | string
+    dietaryPerformances?: NullableStringFieldUpdateOperationsInput | string | null
     pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
     immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20618,7 +20618,7 @@ export namespace Prisma {
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
     smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPerformances?: StringFieldUpdateOperationsInput | string
+    dietaryPerformances?: NullableStringFieldUpdateOperationsInput | string | null
     pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
     immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20641,7 +20641,7 @@ export namespace Prisma {
     height: string
     weight: string
     smokingStatus?: boolean | null
-    dietaryPerformances: string
+    dietaryPerformances?: string | null
     pregnancyStatus?: boolean | null
     mentalHealthHistory?: boolean | null
     immunizationStatus?: string | null
@@ -20663,7 +20663,7 @@ export namespace Prisma {
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
     smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPerformances?: StringFieldUpdateOperationsInput | string
+    dietaryPerformances?: NullableStringFieldUpdateOperationsInput | string | null
     pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
     immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20686,7 +20686,7 @@ export namespace Prisma {
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
     smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPerformances?: StringFieldUpdateOperationsInput | string
+    dietaryPerformances?: NullableStringFieldUpdateOperationsInput | string | null
     pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
     immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24335,7 +24335,7 @@ export namespace Prisma {
     height: string
     weight: string
     smokingStatus?: boolean | null
-    dietaryPerformances: string
+    dietaryPerformances?: string | null
     pregnancyStatus?: boolean | null
     mentalHealthHistory?: boolean | null
     immunizationStatus?: string | null
@@ -24357,7 +24357,7 @@ export namespace Prisma {
     height: string
     weight: string
     smokingStatus?: boolean | null
-    dietaryPerformances: string
+    dietaryPerformances?: string | null
     pregnancyStatus?: boolean | null
     mentalHealthHistory?: boolean | null
     immunizationStatus?: string | null
@@ -24544,7 +24544,7 @@ export namespace Prisma {
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
     smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPerformances?: StringFieldUpdateOperationsInput | string
+    dietaryPerformances?: NullableStringFieldUpdateOperationsInput | string | null
     pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
     immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24566,7 +24566,7 @@ export namespace Prisma {
     height?: StringFieldUpdateOperationsInput | string
     weight?: StringFieldUpdateOperationsInput | string
     smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPerformances?: StringFieldUpdateOperationsInput | string
+    dietaryPerformances?: NullableStringFieldUpdateOperationsInput | string | null
     pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     mentalHealthHistory?: NullableBoolFieldUpdateOperationsInput | boolean | null
     immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null

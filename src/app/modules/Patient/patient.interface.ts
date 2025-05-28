@@ -1,6 +1,5 @@
 import { BloodGroup, Gender, MaritalStatus } from "../../../generated/prisma";
 
-
 export type IPatientFilterRequest = {
   searchTerm?: string | undefined;
   email?: string | undefined;
@@ -16,9 +15,9 @@ type IPatientHealthData = {
   height: string;
   weight: string;
   smokingStatus?: boolean;
-  dietaryPreferences?: string;
+  dietaryPerformances?: string;
   pregnancyStatus?: boolean;
-  mentalHealthHistory?: string;
+  mentalHealthHistory?: boolean;
   immunizationStatus?: string;
   hasPastSurgeries?: boolean;
   recentAnxiety?: boolean;
