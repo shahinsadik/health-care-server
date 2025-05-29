@@ -3,6 +3,7 @@ import { PaymentStatus, UserRole } from "../../../generated/prisma";
 import ApiError from "../../errors/ApiError";
 import { IAuthUser } from "../../interfaces/common";
 import prisma from "../../../sheared/prisma";
+import { log } from "console";
 
 const fetchDashboardMeta = (user: IAuthUser) => {
   let metaData;
@@ -38,6 +39,9 @@ const getSuperAdminMetaData = async () => {
       status: PaymentStatus.PAID,
     },
   });
+  const barChartData = await getBarChartData();
+  const pieChartData = await getPieChartData();
+
   return {
     appointmentCount,
     doctorCount,
@@ -45,6 +49,8 @@ const getSuperAdminMetaData = async () => {
     adminCount,
     paymentCount,
     totalRevenue,
+    barChartData,
+    pieChartData,
   };
 };
 const getAdminMetaData = async () => {
@@ -60,19 +66,17 @@ const getAdminMetaData = async () => {
       status: PaymentStatus.PAID,
     },
   });
-  console.log({
-    appointmentCount,
-    patientCount,
-    doctorCount,
-    paymentCount,
-    totalRevenue,
-  });
+  const barChartData = await getBarChartData();
+  const pieChartData = await getPieChartData();
+
   return {
     appointmentCount,
     patientCount,
     doctorCount,
     paymentCount,
     totalRevenue,
+    barChartData,
+    pieChartData,
   };
 };
 const getDoctorMetaData = async (user: IAuthUser) => {
@@ -172,6 +176,32 @@ const getPatientMetaData = async (user: IAuthUser) => {
     reviewCount,
     formattedAppointmentStatusDistribution,
   };
+};
+const getBarChartData = async () => {
+  const appointmentCountByMonth: { month: Date; count: BigInt }[] =
+    await prisma.$queryRaw`
+    SELECT DATE_TRUNC('month', "createdAt") AS month, 
+    CAST(COUNT(*)AS INT) AS count
+    FROM "appointments"
+    GROUP BY month
+    ORDER BY month ASC;
+    `;
+  return appointmentCountByMonth;
+};
+
+const getPieChartData = async () => {
+  const appointmentStatusDistribution = await prisma.appointment.groupBy({
+    by: ["status"],
+    _count: {
+      id: true,
+    },
+  });
+  const formattedAppointmentStatusDistribution =
+    appointmentStatusDistribution.map((item) => ({
+      status: item.status,
+      count: Number(item._count.id),
+    }));
+  return formattedAppointmentStatusDistribution;
 };
 
 export const MetaService = {
