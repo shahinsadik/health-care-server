@@ -295,7 +295,6 @@ const cancelUnpaidAppointments = async () => {
     }
   });
 
-  //console.log("updated")
 };
 
 export const AppointmentService = {
