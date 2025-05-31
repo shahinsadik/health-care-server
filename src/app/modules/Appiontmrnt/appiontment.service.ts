@@ -11,7 +11,6 @@ import {
   UserRole,
 } from "../../../generated/prisma";
 
-
 import ApiError from "../../errors/ApiError";
 const createAppointment = async (user: IAuthUser, payload: any) => {
   const patientData = await prisma.patient.findUniqueOrThrow({
@@ -242,7 +241,7 @@ const changeAppointmentStatus = async (
       id: appointmentId,
     },
     data: {
-     status: statuss,
+      status: statuss,
     },
   });
 
@@ -294,7 +293,6 @@ const cancelUnpaidAppointments = async () => {
       });
     }
   });
-
 };
 
 export const AppointmentService = {
